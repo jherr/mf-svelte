@@ -11,11 +11,9 @@ module.exports = {
     bundle: ["./src/main.js"],
   },
   resolve: {
-    alias: {
-      svelte: path.resolve("node_modules", "svelte"),
-    },
     extensions: [".mjs", ".js", ".svelte"],
     mainFields: ["svelte", "browser", "module", "main"],
+    conditionNames: ["svelte", "browser", "import"],
   },
   output: {
     path: __dirname + "/public",
@@ -50,6 +48,7 @@ module.exports = {
   },
   devServer: {
     port: 8081,
+    static: path.resolve(__dirname, "./public"),
   },
   mode,
   plugins: [
